@@ -1,0 +1,4 @@
+Vulnerability ID, Vulnerable Class, Vulnerable Method
+CVE-XXX-XXX1, com/fasterxml/jackson/databind/SerializerProvider, findTypedValueSerializer
+CVE-XXX-XXX2, com/fasterxml/jackson/core/StreamReadConstraints, validateFPLength
+CVE-XXX-XXX2, com/fasterxml/jackson/annotation/SimpleObjectIdResolver, bindItem

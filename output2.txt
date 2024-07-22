@@ -1,0 +1,19 @@
+Vulnerability ID: CVE-XXX-XXX2
+  Vulnerable Code: com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength
+      Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/core/base/ParserMinimalBase.getValueAsDouble]
+      Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/databind/deser/std/NumberDeserializers$BigDecimalDeserializer.deserialize]
+      Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/core/base/ParserBase.resetFloat]
+      Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/databind/deser/std/NumberDeserializers$NumberDeserializer.deserialize]
+      Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/databind/deser/std/StdDeserializer._parseFloatPrimitive]
+      Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/databind/deser/std/NumberDeserializers$FloatDeserializer._parseFloat]
+      Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/databind/deser/std/NumberDeserializers$DoubleDeserializer._parseDouble]
+  Vulnerable Code: com/fasterxml/jackson/annotation/SimpleObjectIdResolver.bindItem
+      Execution Path: [com/fasterxml/jackson/annotation/SimpleObjectIdResolver.bindItem]
+Vulnerability ID: CVE-XXX-XXX1
+  Vulnerable Code: com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer
+      Execution Path: [com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer, com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer]
+      Execution Path: [com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer, com/fasterxml/jackson/databind/SerializerProvider.defaultSerializeField]
+      Execution Path: [com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer, com/fasterxml/jackson/databind/util/JSONWrappedObject.serialize, com/fasterxml/jackson/databind/util/JSONWrappedObject.serializeWithType]
+      Execution Path: [com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer, com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.acceptJsonFormatVisitor]
+      Execution Path: [com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer, com/fasterxml/jackson/databind/util/JSONPObject.serialize, com/fasterxml/jackson/databind/util/JSONPObject.serializeWithType]
+      Execution Path: [com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer, com/fasterxml/jackson/databind/SerializerProvider.defaultSerializeValue]
