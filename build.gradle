@@ -19,3 +19,22 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+// Add the below task to the build.gradle of the source code you want to analyze to create a fat jar.
+
+// Define a task to assemble a fat JAR
+//task fatJar(type: Jar) {
+//    manifest {
+//        attributes 'Main-Class': mainClassName
+//    }
+//    archiveBaseName.set("${project.name}-all")
+//    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+//    // Handle duplicate entries
+//    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//}
+//
+//// Make the fat JAR the default artifact
+//artifacts {
+//    archives fatJar
+//}
