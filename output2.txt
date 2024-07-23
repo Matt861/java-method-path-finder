@@ -1,3 +1,15 @@
+Vulnerability ID: CVE-XXX-XXX4
+  Vulnerable Code: com/fasterxml/jackson/databind/node/NodeSerialization
+      Execution Path: [com/fasterxml/jackson/databind/node/NodeSerialization, com/fasterxml/jackson/databind/node/NodeSerialization.readExternal]
+      Execution Path: [com/fasterxml/jackson/databind/node/NodeSerialization, com/fasterxml/jackson/databind/node/BaseJsonNode.writeReplace]
+      Execution Path: [com/fasterxml/jackson/databind/node/NodeSerialization, com/fasterxml/jackson/databind/node/NodeSerialization.from, com/fasterxml/jackson/databind/node/BaseJsonNode.writeReplace]
+Vulnerability ID: CVE-XXX-XXX3
+  Vulnerable Code: com/fasterxml/jackson/databind/ext/DOMDeserializer
+      Execution Path: [com/fasterxml/jackson/databind/ext/DOMDeserializer, com/fasterxml/jackson/databind/ext/DOMDeserializer.parse]
+      Execution Path: [com/fasterxml/jackson/databind/ext/DOMDeserializer, com/fasterxml/jackson/databind/ext/DOMDeserializer$DocumentDeserializer.<init>]
+      Execution Path: [com/fasterxml/jackson/databind/ext/DOMDeserializer, com/fasterxml/jackson/databind/ext/DOMDeserializer$NodeDeserializer.<init>]
+      Execution Path: [com/fasterxml/jackson/databind/ext/DOMDeserializer, com/fasterxml/jackson/databind/ext/DOMDeserializer$DocumentDeserializer._deserialize]
+      Execution Path: [com/fasterxml/jackson/databind/ext/DOMDeserializer, com/fasterxml/jackson/databind/ext/DOMDeserializer$NodeDeserializer._deserialize]
 Vulnerability ID: CVE-XXX-XXX2
   Vulnerable Code: com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength
       Execution Path: [com/fasterxml/jackson/core/StreamReadConstraints.validateFPLength, com/fasterxml/jackson/core/base/ParserMinimalBase.getValueAsDouble]

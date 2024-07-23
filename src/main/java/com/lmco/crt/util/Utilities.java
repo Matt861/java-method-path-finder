@@ -1,7 +1,5 @@
 package com.lmco.crt.util;
 
-import com.lmco.crt.CSVToMap;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +16,7 @@ public class Utilities {
         Map<String, List<String>> vulnerableCodeMap = new HashMap<>();
 
         // Use the class loader to get the resource
-        ClassLoader classLoader = CSVToMap.class.getClassLoader();
+        ClassLoader classLoader = Utilities.class.getClassLoader();
         try (InputStream is = classLoader.getResourceAsStream(csvFilePath);
              BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
 
@@ -33,7 +31,8 @@ public class Utilities {
             while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] columns = line.split(csvSplitBy);
-                String key = columns[0];
+                String key = columns[0].replace(" ", "");
+                // Vulnerable class/method defined
                 if (columns.length == 3) {
                     // Combine class/method name columns and remove whitespaces
                     String value = (columns[1] + "." + columns[2]).replace(" ", "");
@@ -46,14 +45,16 @@ public class Utilities {
                         vulnerableCodeMap.put(key, new ArrayList<>(Collections.singleton(value)));
                     }
                 }
+                // Only vulnerable class is defined
                 else if (columns.length == 2) {
+                    String value = columns[1].replace(" ", "");
                     // Check if the key already exists
                     if (vulnerableCodeMap.containsKey(key)) {
                         // If the key exists, add the new values to the existing list
-                        vulnerableCodeMap.get(key).add(columns[1]);
+                        vulnerableCodeMap.get(key).add(value);
                     } else {
                         // If the key doesn't exist, create a new entry
-                        vulnerableCodeMap.put(key, new ArrayList<>(Collections.singleton(columns[1])));
+                        vulnerableCodeMap.put(key, new ArrayList<>(Collections.singleton(value)));
                     }
                 }
                 else {

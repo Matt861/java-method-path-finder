@@ -35,7 +35,7 @@ public class MethodPathFinder2 {
 
     public static void main(String[] args) throws IOException {
 
-        String jarPath = "jars\\jackson-databind-2.18.0-SNAPSHOT-with-dependencies.jar";
+        String jarPath = "jars\\crt-service-all-1.0-SNAPSHOT.jar";
 
         Map<String, ClassInfo> classInfoMap = extractClassesFromJar(jarPath);
         Map<String, List<String>> methodCallGraph = buildMethodCallGraph(classInfoMap);
@@ -47,24 +47,34 @@ public class MethodPathFinder2 {
             List<String> vulnerableCodeList = vulnerableCodeMapping.getValue();
             for (String vulnerableCodeSource : vulnerableCodeList) {
                 TreeNode<String> root = new TreeNode<>(vulnerableCodeSource);
-                createMethodCallTree(classInfoMap, methodCallGraph, vulnerableCodeSource, root);
+                // Vulnerable code is for an entire class and not a specific method
+                if (!vulnerableCodeSource.contains(".")) {
+                    List<String> classMethods = collectClassMethods(methodCallGraph, vulnerableCodeSource);
+                    for (String classMethod : classMethods) {
+                        createMethodCallTree(classInfoMap, methodCallGraph, classMethod, root);
+                    }
+                }
+                else {
+                    createMethodCallTree(classInfoMap, methodCallGraph, vulnerableCodeSource, root);
+                }
+                //createMethodCallTree(classInfoMap, methodCallGraph, vulnerableCodeSource, root);
                 List<List<String>> allMethodPaths = getAllMethodPaths(root);
                 methodPathsMap.put(root.data, allMethodPaths);
                 vulnerableCodePathsMap.put(vulnerabilityId, methodPathsMap);
             }
         }
-        for (Map.Entry<String, Map<String, List<List<String>>>> vulnPathMapping : vulnerableCodePathsMap.entrySet()) {
-            String vulnId = vulnPathMapping.getKey();
-            Map<String, List<List<String>>> vulnPathSubMap = vulnPathMapping.getValue();
-            for (Map.Entry<String, List<List<String>>> vulnerableCodePaths : vulnPathSubMap.entrySet()) {
-                String vulnerableCode = vulnerableCodePaths.getKey();
-                List<List<String>> codeExecutionPaths = vulnerableCodePaths.getValue();
-                for (List<String> codeExecutionPath : codeExecutionPaths) {
-                    Collections.reverse(codeExecutionPath);
-                    System.out.println("VulnId:" + vulnId + ", " + "VulnerableCode: " + vulnerableCode + ", " + "Execution Path: " + codeExecutionPath.toString());
-                }
-            }
-        }
+//        for (Map.Entry<String, Map<String, List<List<String>>>> vulnPathMapping : vulnerableCodePathsMap.entrySet()) {
+//            String vulnId = vulnPathMapping.getKey();
+//            Map<String, List<List<String>>> vulnPathSubMap = vulnPathMapping.getValue();
+//            for (Map.Entry<String, List<List<String>>> vulnerableCodePaths : vulnPathSubMap.entrySet()) {
+//                String vulnerableCode = vulnerableCodePaths.getKey();
+//                List<List<String>> codeExecutionPaths = vulnerableCodePaths.getValue();
+//                for (List<String> codeExecutionPath : codeExecutionPaths) {
+//                    Collections.reverse(codeExecutionPath);
+//                    System.out.println("VulnId:" + vulnId + ", " + "VulnerableCode: " + vulnerableCode + ", " + "Execution Path: " + codeExecutionPath.toString());
+//                }
+//            }
+//        }
         System.out.println("breakpoint");
 
         assert methodPathsMap != null;
@@ -93,12 +103,11 @@ public class MethodPathFinder2 {
         Map<String, List<String>> methodCallGraph = new HashMap<>();
         for (ClassInfo classInfo : classInfoMap.values()) {
             ClassNode classNode = classInfo.classNode;
-            for (MethodNode method : (List<MethodNode>) classNode.methods) {
+            for (MethodNode method : classNode.methods) {
                 String methodName = classNode.name + "." + method.name;
                 methodCallGraph.putIfAbsent(methodName, new ArrayList<>());
                 InsnList instructions = method.instructions;
-                for (Iterator<AbstractInsnNode> it = instructions.iterator(); it.hasNext(); ) {
-                    AbstractInsnNode insn = it.next();
+                for (AbstractInsnNode insn : instructions) {
                     if (insn.getType() == AbstractInsnNode.METHOD_INSN) {
                         MethodInsnNode methodInsn = (MethodInsnNode) insn;
                         String calledMethodName = methodInsn.owner + "." + methodInsn.name;
@@ -110,12 +119,11 @@ public class MethodPathFinder2 {
         return methodCallGraph;
     }
 
-    private static void createMethodCallTree(Map<String, ClassInfo> classInfoMap, Map<String, List<String>> methodCallGraph, String targetMethodFullName, TreeNode<String> node) {
+    private static void createMethodCallTree(Map<String, ClassInfo> classInfoMap, Map<String, List<String>> methodCallGraph,
+                                             String targetMethodFullName, TreeNode<String> node) {
         for (Map.Entry<String, List<String>> methodCallEntry : methodCallGraph.entrySet()) {
             String callingMethodFullName = methodCallEntry.getKey();
-            List<String> calledMethodFullNames = methodCallEntry.getValue();
             if (methodCallEntry.getValue().contains(targetMethodFullName)) {
-                //System.out.println("CallingMethod: " + callingMethodFullName);
                 String callingMethodClass = callingMethodFullName.substring(0, callingMethodFullName.lastIndexOf('.'));
                 boolean isAbstract = isDerivedFromAbstractClass(classInfoMap, callingMethodClass);
                 TreeNode<String> child = node.addChild(callingMethodFullName);
@@ -126,12 +134,15 @@ public class MethodPathFinder2 {
         }
     }
 
-    private static String createIndent(int depth) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < depth; i++) {
-            sb.append(' ');
+    private static List<String> collectClassMethods(Map<String, List<String>> methodCallGraph, String vulnerableCodeSource) {
+        List<String> classMethods = new ArrayList<>();
+        for (Map.Entry<String, List<String>> methodCallEntry : methodCallGraph.entrySet()) {
+            if (methodCallEntry.getKey().contains(vulnerableCodeSource)) {
+                classMethods.add(methodCallEntry.getKey());
+            }
         }
-        return sb.toString();
+
+        return classMethods;
     }
 
     public static List<List<String>> getAllMethodPaths(TreeNode<String> root) {
@@ -174,21 +185,8 @@ public class MethodPathFinder2 {
         return false;
     }
 
-//    private static void writePathsToFile(Map<String, List<List<String>>> allMethodPathsMap) {
-//        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
-//            for (Map.Entry<String, List<List<String>>> entry : allMethodPathsMap.entrySet()) {
-//                writer.write("Vulnerable Method: " + entry.getKey() + "\n");
-//                for (List<String> list : entry.getValue()) {
-//                    writer.write("  Execution Path: " + list.toString() + "\n");
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     private static void writePathsToFile(Map<String, Map<String, List<List<String>>>> vulnerableCodePathsMap) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output2.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output3.txt"))) {
             for (Map.Entry<String, Map<String, List<List<String>>>> vulnPathMapping : vulnerableCodePathsMap.entrySet()) {
                 String vulnId = vulnPathMapping.getKey();
                 writer.write("Vulnerability ID: " + vulnId + "\n");
