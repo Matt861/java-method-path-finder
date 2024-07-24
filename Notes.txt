@@ -1,0 +1,26 @@
+Definitions of characters found in class/method strings
+
+"B": byte
+"C": char
+"D": double
+"F": float
+"I": int
+"J": long
+"S": short
+"V": void
+"Z": boolean
+"L<class name>;": reference to an instance of class <class name>
+"[": array
+"$": subclass
+
+<init> is the (or one of the) constructor(s) for the instance, and non-static field initialization.
+
+   X(){
+      // <init>
+   }
+
+<clinit> are the static initialization blocks for the class, and static field initialization.
+
+   static {
+      // <clinit>
+   }

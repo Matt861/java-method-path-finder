@@ -1,0 +1,150 @@
+Vulnerability ID: CVE-XXX-XXX3
+  Vulnerable Code: com/fasterxml/jackson/databind/ext/DOMDeserializer.parse(Ljava/lang/String;)Lorg/w3c/dom/Document;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ext/DOMDeserializer.parse(Ljava/lang/String;)Lorg/w3c/dom/Document;
+  Vulnerable Code: com/fasterxml/jackson/databind/ext/DOMDeserializer._deserialize(Ljava/lang/String;Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Object;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ext/DOMDeserializer._deserialize(Ljava/lang/String;Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Object;
+  Vulnerable Code: com/fasterxml/jackson/databind/ext/DOMDeserializer.documentBuilder()Ljavax/xml/parsers/DocumentBuilder;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ext/DOMDeserializer.parse(Ljava/lang/String;)Lorg/w3c/dom/Document;
+            ->com/fasterxml/jackson/databind/ext/DOMDeserializer.documentBuilder()Ljavax/xml/parsers/DocumentBuilder;
+  Vulnerable Code: com/fasterxml/jackson/databind/ext/DOMDeserializer.<init>(Ljava/lang/Class;)V
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ext/DOMDeserializer$NodeDeserializer.<init>()V
+            ->com/fasterxml/jackson/databind/ext/DOMDeserializer.<init>(Ljava/lang/Class;)V
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ext/DOMDeserializer$DocumentDeserializer.<init>()V
+            ->com/fasterxml/jackson/databind/ext/DOMDeserializer.<init>(Ljava/lang/Class;)V
+  Vulnerable Code: com/fasterxml/jackson/databind/ext/DOMDeserializer.<clinit>()V
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ext/DOMDeserializer.<clinit>()V
+Vulnerability ID: CVE-XXX-XXX2
+  Vulnerable Code: com/fasterxml/jackson/annotation/SimpleObjectIdResolver.bindItem(Lcom/fasterxml/jackson/annotation/ObjectIdGenerator$IdKey;Ljava/lang/Object;)V
+      Execution Path: 
+           ->com/lmco/crt/Main.main([Ljava/lang/String;)V
+            ->com/fasterxml/jackson/annotation/SimpleObjectIdResolver.bindItem(Lcom/fasterxml/jackson/annotation/ObjectIdGenerator$IdKey;Ljava/lang/Object;)V
+  Vulnerable Code: com/fasterxml/jackson/core/base/ParserBase.enable(Lcom/fasterxml/jackson/core/JsonParser$Feature;)Lcom/fasterxml/jackson/core/JsonParser;
+      Execution Path: 
+           ->com/fasterxml/jackson/core/base/ParserBase.enable(Lcom/fasterxml/jackson/core/JsonParser$Feature;)Lcom/fasterxml/jackson/core/JsonParser;
+Vulnerability ID: CVE-XXX-XXX1
+  Vulnerable Code: com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.acceptJsonFormatVisitor(Lcom/fasterxml/jackson/databind/jsonFormatVisitors/JsonFormatVisitorWrapper;Lcom/fasterxml/jackson/databind/JavaType;)V
+            ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/util/JSONPObject.serializeWithType(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/jsontype/TypeSerializer;)V
+            ->com/fasterxml/jackson/databind/util/JSONPObject.serialize(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;Lcom/fasterxml/jackson/databind/JavaType;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Lcom/fasterxml/jackson/databind/JavaType;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+             ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+              ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;Lcom/fasterxml/jackson/databind/JavaType;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter._writeCloseableValue(Ljava/lang/Object;Lcom/fasterxml/jackson/databind/JavaType;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+             ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Lcom/fasterxml/jackson/databind/JavaType;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+              ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+               ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/util/JSONWrappedObject.serializeWithType(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/jsontype/TypeSerializer;)V
+            ->com/fasterxml/jackson/databind/util/JSONWrappedObject.serialize(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/module/scala/ser/OptionSerializer.findSerializer(Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/JavaType;Lscala/Option;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+            ->com/fasterxml/jackson/module/scala/ser/OptionSerializer$.findSerializer(Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/JavaType;Lscala/Option;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/module/scala/ser/EitherSerializer.createContextual(Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+            ->com/fasterxml/jackson/module/scala/ser/EitherSerializer.createContextualDetails(Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/BeanProperty;Lcom/fasterxml/jackson/module/scala/ser/EitherDetails;)Lcom/fasterxml/jackson/module/scala/ser/EitherDetails;
+             ->com/fasterxml/jackson/module/scala/ser/OptionSerializer$.findSerializer(Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/JavaType;Lscala/Option;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+              ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Lcom/fasterxml/jackson/databind/JavaType;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+  Vulnerable Code: com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->org/cyclonedx/util/LicenseChoiceSerializer.serialize(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+            ->org/cyclonedx/util/LicenseChoiceSerializer.serialize(Lorg/cyclonedx/model/LicenseChoice;Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+             ->com/fasterxml/jackson/databind/SerializerProvider.defaultSerializeField(Ljava/lang/String;Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonGenerator;)V
+              ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->org/springframework/http/codec/json/AbstractJackson2Encoder.lambda$encode$1(Lorg/springframework/core/io/buffer/DataBufferFactory;Ljava/util/Map;Lcom/fasterxml/jackson/databind/SequenceWriter;Lcom/fasterxml/jackson/core/util/ByteArrayBuilder;[BLjava/lang/Object;)Lorg/springframework/core/io/buffer/DataBuffer;
+            ->org/springframework/http/codec/json/AbstractJackson2Encoder.encodeStreamingValue(Ljava/lang/Object;Lorg/springframework/core/io/buffer/DataBufferFactory;Ljava/util/Map;Lcom/fasterxml/jackson/databind/SequenceWriter;Lcom/fasterxml/jackson/core/util/ByteArrayBuilder;[B)Lorg/springframework/core/io/buffer/DataBuffer;
+             ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+              ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+               ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+                ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.writeAll(Ljava/lang/Iterable;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+             ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+              ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+               ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.writeAll(Ljava/util/Collection;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+             ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+              ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+               ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.writeAll([Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+             ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+              ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+               ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->org/springframework/http/codec/json/AbstractJackson2Encoder.lambda$encode$1(Lorg/springframework/core/io/buffer/DataBufferFactory;Ljava/util/Map;Lcom/fasterxml/jackson/databind/SequenceWriter;Lcom/fasterxml/jackson/core/util/ByteArrayBuilder;[BLjava/lang/Object;)Lorg/springframework/core/io/buffer/DataBuffer;
+            ->org/springframework/http/codec/json/AbstractJackson2Encoder.encodeStreamingValue(Ljava/lang/Object;Lorg/springframework/core/io/buffer/DataBufferFactory;Ljava/util/Map;Lcom/fasterxml/jackson/databind/SequenceWriter;Lcom/fasterxml/jackson/core/util/ByteArrayBuilder;[B)Lorg/springframework/core/io/buffer/DataBuffer;
+             ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+              ->com/fasterxml/jackson/databind/SequenceWriter._writeCloseableValue(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+               ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+                ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+                 ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.writeAll(Ljava/lang/Iterable;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+             ->com/fasterxml/jackson/databind/SequenceWriter._writeCloseableValue(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+              ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+               ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+                ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.writeAll(Ljava/util/Collection;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+             ->com/fasterxml/jackson/databind/SequenceWriter._writeCloseableValue(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+              ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+               ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+                ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/SequenceWriter.writeAll([Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+            ->com/fasterxml/jackson/databind/SequenceWriter.write(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+             ->com/fasterxml/jackson/databind/SequenceWriter._writeCloseableValue(Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/SequenceWriter;
+              ->com/fasterxml/jackson/databind/SequenceWriter._findAndAddDynamic(Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+               ->com/fasterxml/jackson/databind/ser/impl/PropertySerializerMap.findAndAddRootValueSerializer(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/SerializerProvider;)Lcom/fasterxml/jackson/databind/ser/impl/PropertySerializerMap$SerializerAndMapResult;
+                ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/ser/std/JsonValueSerializer.serialize(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+            ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/util/JSONPObject.serializeWithType(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/jsontype/TypeSerializer;)V
+            ->com/fasterxml/jackson/databind/util/JSONPObject.serialize(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/node/POJONode.serialize(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+            ->com/fasterxml/jackson/databind/SerializerProvider.defaultSerializeValue(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonGenerator;)V
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/datatype/jdk8/StreamSerializer.lambda$serialize$0(Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/core/JsonGenerator;Ljava/lang/Object;)V
+            ->com/fasterxml/jackson/databind/SerializerProvider.defaultSerializeValue(Ljava/lang/Object;Lcom/fasterxml/jackson/core/JsonGenerator;)V
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/module/scala/ser/OptionSerializer.findSerializer(Lcom/fasterxml/jackson/databind/SerializerProvider;Ljava/lang/Class;Lscala/Option;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+            ->com/fasterxml/jackson/module/scala/ser/OptionSerializer$.findSerializer(Lcom/fasterxml/jackson/databind/SerializerProvider;Ljava/lang/Class;Lscala/Option;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/module/scala/ser/EitherSerializer.$anonfun$serialize$1(Lcom/fasterxml/jackson/module/scala/ser/EitherSerializer;Lcom/fasterxml/jackson/databind/SerializerProvider;Ljava/lang/Object;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+            ->com/fasterxml/jackson/module/scala/ser/EitherSerializer.findCachedSerializer(Lcom/fasterxml/jackson/databind/SerializerProvider;Ljava/lang/Class;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+             ->com/fasterxml/jackson/module/scala/ser/OptionSerializer$.findSerializer(Lcom/fasterxml/jackson/databind/SerializerProvider;Ljava/lang/Class;Lscala/Option;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+              ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;
+      Execution Path: 
+           ->com/fasterxml/jackson/databind/util/JSONWrappedObject.serializeWithType(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;Lcom/fasterxml/jackson/databind/jsontype/TypeSerializer;)V
+            ->com/fasterxml/jackson/databind/util/JSONWrappedObject.serialize(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/databind/SerializerProvider;)V
+             ->com/fasterxml/jackson/databind/SerializerProvider.findTypedValueSerializer(Ljava/lang/Class;ZLcom/fasterxml/jackson/databind/BeanProperty;)Lcom/fasterxml/jackson/databind/JsonSerializer;

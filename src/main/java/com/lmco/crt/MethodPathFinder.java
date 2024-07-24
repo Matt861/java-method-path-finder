@@ -35,7 +35,7 @@ public class MethodPathFinder {
 
     public static void main(String[] args) throws IOException {
 
-        String jarPath = "jars\\jackson-databind-2.18.0-SNAPSHOT-with-dependencies.jar";
+        String jarPath = "jars\\crt-service-all-1.0-SNAPSHOT.jar";
 
         Map<String, ClassInfo> classInfoMap = extractClassesFromJar(jarPath);
         Map<String, List<String>> methodCallGraph = buildMethodCallGraph(classInfoMap);
